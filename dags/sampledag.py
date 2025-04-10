@@ -7,10 +7,10 @@ from airflow_operator.sample_operator import SampleOperator
 # test dag
 with DAG(
 "test-custom-package",
-tags=["example"]
+tags=["example"],
 description="A simple tutorial DAG",
 schedule_interval=None,
-start_date=datetime(2021, 1, 1),
+start_date=datetime(2025, 1, 1),
 ) as dag:
     task = SampleOperator(task_id="sample-task", name="foo_bar")
 
