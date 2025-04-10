@@ -2,7 +2,7 @@ from datetime import datetime
 from airflow import DAG
 
  # Import from private package
-from airflow_operator.sample_operator import SampleOperator
+from airflow_operator.my_custom_operator import MyCustomOperator
 
 # test dag
 with DAG(
