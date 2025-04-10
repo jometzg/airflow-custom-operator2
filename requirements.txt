@@ -2,3 +2,4 @@ Apache-Airflow
 apache-airflow
 requests
 pytest
+setuptools

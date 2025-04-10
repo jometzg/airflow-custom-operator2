@@ -1,10 +1,17 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: airflow-custom-operator
 Version: 0.1.0
 Summary: A custom Apache Airflow operator
-Author: Your Name
-Author-email: your.email@example.com
+Author: John Metzger
+Author-email: john.metzger@lseg.com
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: Apache Software License
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.6
+Requires-Dist: apache-airflow>=2.0.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary

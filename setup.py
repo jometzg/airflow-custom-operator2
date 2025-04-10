@@ -3,8 +3,8 @@ from setuptools import setup, find_packages
 setup(
     name='airflow-custom-operator',
     version='0.1.0',
-    author='Your Name',
-    author_email='your.email@example.com',
+    author='John Metzger',
+    author_email='john.metzger@lseg.com',
     description='A custom Apache Airflow operator',
     packages=find_packages(),
     install_requires=[
