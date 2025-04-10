@@ -12,6 +12,6 @@ description="A simple tutorial DAG",
 schedule_interval=None,
 start_date=datetime(2025, 1, 1),
 ) as dag:
-    task = SampleOperator(task_id="sample-task", name="foo_bar")
+    task = MyCustomOperator(task_id="sample-task", name="foo_bar")
 
     task
