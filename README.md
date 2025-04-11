@@ -21,14 +21,23 @@ pip install -r requirements.txt
 To use the `MyCustomOperator` in your Airflow DAG, you can import it as follows:
 
 ```python
+from datetime import datetime
+from airflow import DAG
+
+ # Import from private package
 from custom_operator.my_custom_operator import MyCustomOperator
 
-my_task = MyCustomOperator(
-    task_id='my_task',
-    param1='value1',
-    param2='value2',
-    dag=dag
-)
+# test dag
+with DAG(
+"test-custom-package",
+tags=["example"],
+description="A simple tutorial DAG",
+schedule_interval=None,
+start_date=datetime(2025, 1, 1),
+) as dag:
+    task = MyCustomOperator(task_id="sample-task",  param1="hello", param2="world",)
+
+    task
 ```
 
 ## Testing
