@@ -48,9 +48,25 @@ Unit tests for the `MyCustomOperator` are located in the `tests` directory. You 
 pytest tests/
 ```
 
-## Contributing
+## Building for the Package for Distribution
+The package needs to be built and it is this package that the Airflow DAGs use:
 
-Contributions are welcome! Please submit a pull request or open an issue for any enhancements or bug fixes.
+```bash
+python setup.py sdist bdist_wheel
+```
+
+## Use Inside Apache Airflow in Microsoft Fabric
+To use this inside a Microsoft Fabric hosted Apache Airflow session, two things need to be done:
+
+1. The source for the DAGs needs to be GitHub hosted.
+2. The path to the packaged Operator needs to be added to the Apache Airflow requirements.
+
+### Using a GitHub Repository
+The source for all code for Airflow needs to point to a source code source. As this repository is in GitHub, this needs to be set. The Airflow configuration is read-only, so if the repository is public-faced, then no credentials are needed. For private repositories, credentials will be needed.
+
+### Apache Airflow requirements
+This is configured in the environment variables section and a path the the packaged version of the Operator needs to be added.
+This follows a specific pattern as described in [Install a Private Package as a requirement in Apache Airflow job](https://learn.microsoft.com/en-us/fabric/data-factory/apache-airflow-jobs-install-private-package)
 
 ## License
 
