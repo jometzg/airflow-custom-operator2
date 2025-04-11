@@ -63,10 +63,12 @@ To use this inside a Microsoft Fabric hosted Apache Airflow session, two things 
 
 ### Using a GitHub Repository
 The source for all code for Airflow needs to point to a source code source. As this repository is in GitHub, this needs to be set. The Airflow configuration is read-only, so if the repository is public-faced, then no credentials are needed. For private repositories, credentials will be needed.
+![alt text](./images/airflow-git.png "Airflow GitHub Settings")
 
 ### Apache Airflow requirements
 This is configured in the environment variables section and a path the the packaged version of the Operator needs to be added.
 This follows a specific pattern as described in [Install a Private Package as a requirement in Apache Airflow job](https://learn.microsoft.com/en-us/fabric/data-factory/apache-airflow-jobs-install-private-package)
+![alt text](./images/airflow-requirements.png "Airflow requirements")
 
 ## License
 
