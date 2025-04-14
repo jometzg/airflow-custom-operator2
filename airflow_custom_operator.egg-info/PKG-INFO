@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: airflow-custom-operator
-Version: 0.1.0
+Version: 0.2.0
 Summary: A custom Apache Airflow operator
 Author: John Metzger
 Author-email: john.metzger@lseg.com

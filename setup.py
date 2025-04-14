@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='airflow-custom-operator',
-    version='0.1.0',
+    version='0.2.0',
     author='John Metzger',
     author_email='john.metzger@lseg.com',
     description='A custom Apache Airflow operator',
