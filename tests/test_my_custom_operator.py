@@ -6,18 +6,18 @@ class TestMyCustomOperator(unittest.TestCase):
     def setUp(self):
         self.operator = MyCustomOperator(
             task_id='test_task',
-            param1='value1',
-            param2='value2'
+            param1='hello',
+            param2='world'
         )
 
     def test_initialization(self):
         self.assertEqual(self.operator.task_id, 'test_task')
-        self.assertEqual(self.operator.param1, 'value1')
-        self.assertEqual(self.operator.param2, 'value2')
+        self.assertEqual(self.operator.param1, 'hello')
+        self.assertEqual(self.operator.param2, 'world')
 
     def test_execute(self):
         result = self.operator.execute(context={})
-        self.assertEqual(result, 'expected_result')  # Replace with actual expected result
+        self.assertEqual(result, 'helloworld')  # Replace with actual expected result
 
     def test_additional_method(self):
         # Test any additional methods you may have in MyCustomOperator
