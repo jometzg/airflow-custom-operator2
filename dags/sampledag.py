@@ -1,5 +1,7 @@
 from datetime import datetime
 from airflow import DAG
+from airflow.providers.apache.livy.operators.livy import LivyOperator
+
 
  # Import from private package
 from custom_operator.my_custom_operator import MyCustomOperator
