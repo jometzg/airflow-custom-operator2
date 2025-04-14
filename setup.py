@@ -9,6 +9,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'apache-airflow>=2.0.0',
+        'apache-airflow-providers-apache-livy>=4.0.0'
     ],
     classifiers=[
         'Programming Language :: Python :: 3',

@@ -10,6 +10,7 @@ Classifier: Operating System :: OS Independent
 Requires-Python: >=3.6
 License-File: LICENSE
 Requires-Dist: apache-airflow>=2.0.0
+Requires-Dist: apache-airflow-providers-apache-livy>=4.0.0
 Dynamic: author
 Dynamic: author-email
 Dynamic: classifier
