@@ -1,3 +1,4 @@
+LICENSE
 README.md
 setup.py
 airflow_custom_operator.egg-info/PKG-INFO
