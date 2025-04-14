@@ -13,7 +13,7 @@ class MyCustomOperator(LivyOperator):
         self.param1 = param1
         self.param2 = param2
         self.fabric_conn_id = fabric_conn_id
-        self._extra_headers = self.extra_headers or {}
+        self._extra_headers = {}
         self._add_access_token_to_headers()
 
     def _add_access_token_to_headers(self):
