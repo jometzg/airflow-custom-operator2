@@ -5,3 +5,4 @@ pytest
 setuptools
 apache-airflow-providers-apache-livy
 apache-airflow-microsoft-fabric-plugin
+msal

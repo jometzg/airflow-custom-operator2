@@ -1,0 +1,21 @@
+Metadata-Version: 2.4
+Name: livy-session-operator
+Version: 0.1.0
+Summary: A custom Apache Airflow operator to interact with Apache Livy sessions in Microsoft Fabric.
+Author: John Metzger
+Author-email: john.metzger@microsoft.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+License-File: LICENSE
+Requires-Dist: apache-airflow>=2.0.0
+Requires-Dist: apache-airflow-providers-apache-livy>=4.0.0
+Requires-Dist: apache_airflow_microsoft_fabric_plugin>=0.1.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary

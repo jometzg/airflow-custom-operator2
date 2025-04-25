@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+livy_session_operator.egg-info/PKG-INFO
+livy_session_operator.egg-info/SOURCES.txt
+livy_session_operator.egg-info/dependency_links.txt
+livy_session_operator.egg-info/requires.txt
+livy_session_operator.egg-info/top_level.txt
+operators/__init__.py
+operators/livysessionsoperator.py
+operators/utils/__init__.py
+tests/__init__.py
+tests/test_my_custom_operator.py

@@ -6,8 +6,8 @@ airflow_custom_operator.egg-info/SOURCES.txt
 airflow_custom_operator.egg-info/dependency_links.txt
 airflow_custom_operator.egg-info/requires.txt
 airflow_custom_operator.egg-info/top_level.txt
-custom_operator/__init__.py
-custom_operator/my_custom_operator.py
-custom_operator/utils/__init__.py
+operators/__init__.py
+operators/livysessionsoperator.py
+operators/utils/__init__.py
 tests/__init__.py
 tests/test_my_custom_operator.py

@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from custom_operator.my_custom_operator import MyCustomOperator
+from operators.livysessionsoperator import MyCustomOperator
 
 class TestMyCustomOperator(unittest.TestCase):
 
