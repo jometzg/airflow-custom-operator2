@@ -1,10 +1,14 @@
-# Airflow Custom Operator
+# Airflow Custom Livy Session Operator
 
-This project provides a custom Apache Airflow operator, `MyCustomOperator`, designed to extend the functionality of Airflow workflows. 
+This project provides a custom Apache Airflow operator, `CustomSessionLivyOperator`, designed to extend the functionality of Airflow workflows.
+
+The existing LivyOperator uses the Livy batch API, but there are some scenarios where the Livy sessions API is required. One such scenario is submitting in-line Spark SQL.
+
+This Livy Session Operator provides a simplified Operator for sending Spark SQL to a Microsoft Fabric instance.
 
 ## Overview
 
-The `MyCustomOperator` allows users to define custom tasks within their Airflow DAGs, enabling more complex workflows tailored to specific needs.
+The `CustomSessionLivyOperator` allows users to define custom tasks within their Airflow DAGs, enabling more complex workflows tailored to specific needs.
 
 ## Installation
 
@@ -18,31 +22,29 @@ pip install -r requirements.txt
 
 ## Usage
 
-To use the `MyCustomOperator` in your Airflow DAG, you can import it as follows:
+To use the `CustomSessionLivyOperator` in your Airflow DAG, you can import it as follows:
 
 ```python
 from datetime import datetime
 from airflow import DAG
 
  # Import from private package
-from custom_operator.my_custom_operator import MyCustomOperator
+from operators.livysessionsoperator import CustomSessionLivyOperator
 
 # test dag
-with DAG(
-"test-custom-package",
-tags=["example"],
-description="A simple tutorial DAG",
-schedule_interval=None,
-start_date=datetime(2025, 1, 1),
-) as dag:
-    task = MyCustomOperator(task_id="sample-task",  param1="hello", param2="world",)
-
-    task
+livy_spark = CustomSessionLivyOperator(
+        task_id="livy_spark",
+        fabric_conn_id = "fabric",
+        workspace_id="YOUR_FABRIC_WORKSPACE_ID",
+        item_id="YOUR_FABRIC_LAKEHOUSE_ID",
+        command="spark.sql(\"SELECT * FROM lhJohn.green_tripdata_2022 where total_amount > 0\").show()",
+        dag=dag,
+    )
 ```
 
 ## Testing
 
-Unit tests for the `MyCustomOperator` are located in the `tests` directory. You can run the tests using:
+Unit tests for the `CustomSessionLivyOperator` are located in the `tests` directory. You can run the tests using:
 
 ```bash
 pytest tests/
