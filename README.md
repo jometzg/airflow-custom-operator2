@@ -42,6 +42,10 @@ livy_spark = CustomSessionLivyOperator(
     )
 ```
 
+The Operator uses the Fabric *workspace_id* and *item_id* to form the Livy endpoint URL.
+
+It should be noted that this Operator levers off the FabricOperator's mechanism for obtaining an access token. It therefore needs to use the Fabric connection properties to get that [access token](https://learn.microsoft.com/en-us/fabric/data-factory/apache-airflow-jobs-run-fabric-item-job#authentication)
+
 ## Testing
 
 Unit tests for the `CustomSessionLivyOperator` are located in the `tests` directory. You can run the tests using:
