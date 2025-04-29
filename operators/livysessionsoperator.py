@@ -158,7 +158,7 @@ class CustomSessionLivyOperator(BaseOperator):
     # poll for statement to be ready 
     def _poll_for_statement_completed(self, session_id: str, statement_id: int):    
        resp = self._get_statement_state(session_id, statement_id)
-       while resp['state'] == "running":
+       while resp['state'] in ["running", "waiting", "starting"]:
            self.log.info("got statement %s with %s waiting for poll duration", statement_id, resp['state'])
            time.sleep(60) # maybe think about majking this configurable
            resp = self._get_statement_state(session_id, statement_id)
