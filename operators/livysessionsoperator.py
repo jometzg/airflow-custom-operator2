@@ -1,13 +1,11 @@
 from airflow.models import BaseOperator
-from airflow.providers.apache.livy.operators.livy import LivyOperator
-from airflow.providers.apache.livy.hooks.livy import LivyHook, BatchState
 from apache_airflow_microsoft_fabric_plugin.operators.fabric import FabricHook
-import uuid
 import time
 from enum import Enum
 import requests
-from typing import Any
 from airflow.exceptions import AirflowException
+from airflow.utils.decorators import apply_defaults
+
 
 class SessionState(Enum):
     NOT_STARTED = "not_started"
@@ -29,6 +27,9 @@ TERMINAL_STATES = {
     }
 
 class CustomSessionLivyOperator(BaseOperator):
+    template_fields = ('command',) #enables jinja templating
+
+    @apply_defaults
     def __init__(self, fabric_conn_id: str, workspace_id: str, item_id: str, command: str, *args, **kwargs):
         super(CustomSessionLivyOperator, self).__init__(*args, **kwargs)
         self.fabric_conn_id = fabric_conn_id
@@ -45,8 +46,6 @@ class CustomSessionLivyOperator(BaseOperator):
         # Log initialization
         self.log.info("_init with base_url %s", self.base_url)
 
-        # get access token
-        self._add_access_token_to_headers()
 
     def _validate_properties(self):
         """Validate required properties."""
@@ -57,14 +56,18 @@ class CustomSessionLivyOperator(BaseOperator):
         if not self.item_id:
             raise ValueError("The 'item_id' parameter is required.")
         if not self.command:
-            raise ValueError("The 'command' parameter is required.")
+            raise ValueError("The 'command' parameter is required.")    
+    
 
-    def execute(self, context):
-        
+    def execute(self, context):    
         self.log.info(f"Executing LivySesssionOperator: {self.command}")
         retval = ""
         session_id = ""
         try:
+           # get access token
+           self._add_access_token_to_headers()
+           self.log.info("Got access token")
+
            # create a session
            session_id = self._create_session()
            self.log.info("Session created %s", session_id)

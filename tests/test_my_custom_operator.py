@@ -3,6 +3,8 @@ from unittest.mock import patch, MagicMock
 from msal import ConfidentialClientApplication
 import sys
 import os
+from airflow.models import TaskInstance
+from airflow.utils.dates import days_ago
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from operators.livysessionsoperator import CustomSessionLivyOperator
 
@@ -19,7 +21,9 @@ class TestMyCustomOperator(unittest.TestCase):
     def setUp(self,  mock_fabric_hook):
         # Mock the _get_token method to return a real token for testing outside of Fabric UI
         mock_fabric_hook.return_value._get_token.return_value = self.get_access_token()
-     
+        
+        # test command templating
+        sql_table = "lhJohn.green_tripdata_2022"
         self.operator = CustomSessionLivyOperator(
             task_id='test_task',
             fabric_conn_id='fabric',
@@ -42,7 +46,11 @@ class TestMyCustomOperator(unittest.TestCase):
     # test 2
     def test_execute(self):
         # this is the main entry point for the operator
-        result = self.operator.execute(context={})
+        # Create a TaskInstance for testing
+        task_instance = TaskInstance(task=self.operator, execution_date=days_ago(1))
+        context = task_instance.get_template_context()
+
+        result = self.operator.execute(context)
         print("Result of execute:", result)
         self.assertIn('text/plain', result)  # look for part of the SQL result
         pass
